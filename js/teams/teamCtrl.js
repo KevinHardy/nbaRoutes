@@ -4,7 +4,7 @@ app.controller('teamCtrl', function($scope, $routeParams, teamService, teamData)
 
 	teamData = $scope.teamData;
 	$scope.newGame = {
-		homeTeam: $scope.homeTeam.split(' ').join('').toLowerCase(),
+		homeTeam: $scope.homeTeam.toString().split(' ').join('').toLowerCase(),
 
 	};
 
@@ -26,7 +26,7 @@ app.controller('teamCtrl', function($scope, $routeParams, teamService, teamData)
 
 	$scope.submitGame = function() {
 		teamService.addNewGame($scope.newGame).then(function() {
-			teamService.(getTeamData($scope.newGame.homeTeam).then(function(data) {
+			teamService.getTeamData($scope.newGame.homeTeam).then(function(data) {
 				$scope.teamData = data;
 				$scope.newGame = {};
 				$scope.ShowNewGameForm = false;
